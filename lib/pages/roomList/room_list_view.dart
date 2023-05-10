@@ -4,9 +4,9 @@ import 'package:myapp/pages/login/login.dart';
 import 'package:myapp/pages/roomList/room_list.dart';
 import 'package:provider/provider.dart';
 
-class RoomListView extends StatelessWidget {
+class RoomListView11 extends StatelessWidget {
   final RoomListController controller;
-  const RoomListView(this.controller, {Key? key}) : super(key: key);
+  const RoomListView11(this.controller, {Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

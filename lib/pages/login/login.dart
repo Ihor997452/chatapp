@@ -63,7 +63,7 @@ class LoginController extends State<Login> {
         password: passwordTextField.text,
       );
       Navigator.of(context).pushAndRemoveUntil(
-        MaterialPageRoute(builder: (_) => Scene()),
+        MaterialPageRoute(builder: (_) => RoomList()),
         (route) => false,
       );
     } catch (e) {

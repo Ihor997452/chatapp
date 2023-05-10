@@ -3,9 +3,11 @@ import 'package:matrix/matrix.dart';
 import 'package:myapp/pages/login/login_view.dart';
 import 'package:myapp/pages/room/room.dart';
 import 'package:myapp/pages/roomList/room_list_view.dart';
+import 'package:myapp/pages/room_test.dart';
 import 'package:provider/provider.dart';
 
 import '../login/login.dart';
+import '../test.dart';
 
 class RoomList extends StatefulWidget {
   const RoomList({Key? key}) : super(key: key);
@@ -15,9 +17,13 @@ class RoomList extends StatefulWidget {
 }
 
 class RoomListController extends State<RoomList> {
+  List<Room> getRooms() {
+    final client = Provider.of<Client>(context, listen: false);
+    return client.rooms;
+  }
+
   void logout() async {
     final client = Provider.of<Client>(context, listen: false);
-    print(client);
     await client.logout();
     Navigator.of(context).pushAndRemoveUntil(
       MaterialPageRoute(builder: (_) => const Login()),
@@ -31,7 +37,7 @@ class RoomListController extends State<RoomList> {
     }
     Navigator.of(context).push(
       MaterialPageRoute(
-        builder: (_) => MyRoom(room: room),
+        builder: (_) => Roomba(room: room),
       ),
     );
   }

@@ -57,7 +57,7 @@ class MyApp extends StatelessWidget {
 					create: (context) => client,
 					child: child,
 				),
-				home: client.isLogged() ? const Scene() : const Login(),
+				home: client.isLogged() ? RoomList() : const Login(),
 		);
 	}
 }
