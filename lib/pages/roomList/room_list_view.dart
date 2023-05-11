@@ -76,7 +76,7 @@ class RoomListView extends StatelessWidget {
                           ffem: ffem,
                           name: room.getLocalizedDisplayname(),
                           avatar: CircleAvatar(
-                              foregroundImage: NetworkImage(room.avatar!
+                              foregroundImage: room.avatar == null ? null : NetworkImage(room.avatar!
                                   .getThumbnail(client, width: 58, height: 58)
                                   .toString())),
                           lastMessage: room.lastEvent!.body,
