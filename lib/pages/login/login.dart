@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:matrix/matrix.dart';
 import 'package:myapp/pages/login/login_view.dart';
 import 'package:myapp/pages/roomList/room_list.dart';
-import 'package:myapp/pages/test.dart';
+import 'package:myapp/pages/roomList/room_list_view.dart';
 import 'package:provider/provider.dart';
 
 class Login extends StatefulWidget {

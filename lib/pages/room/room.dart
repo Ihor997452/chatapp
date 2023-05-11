@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:matrix/matrix.dart';
 import 'package:myapp/pages/room/room_view.dart';
+import 'package:myapp/pages/room_test.dart';
 
 class MyRoom extends StatefulWidget {
   final Room room;
@@ -13,11 +14,14 @@ class MyRoom extends StatefulWidget {
 
 class RoomController extends State<MyRoom> {
   late final Future<Timeline> timelineFuture;
+  late final ScrollController scrollController;
   final GlobalKey<AnimatedListState> listKey = GlobalKey<AnimatedListState>();
   int count = 0;
 
   @override
   void initState() {
+    scrollController = ScrollController();
+
     timelineFuture = widget.room.getTimeline(onChange: (i) {
       print('on change! $i');
       listKey.currentState?.setState(() {});
@@ -44,6 +48,6 @@ class RoomController extends State<MyRoom> {
 
   @override
   Widget build(BuildContext context) {
-    return RoomView(this);
+    return Roomba(this);
   }
 }

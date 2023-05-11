@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:myapp/pages/login/login.dart';
+import 'package:myapp/util/colors.dart';
 import 'package:myapp/utils.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
@@ -17,7 +18,7 @@ class LoginView extends StatelessWidget {
         body: controller.loading
             ? const Center(
                 child: CircularProgressIndicator(
-                    backgroundColor: Colors.grey, color: Colors.green))
+                    backgroundColor: Colors.grey, color: AppColors.accentColor))
             : SingleChildScrollView(
                 child: Container(
                     padding: EdgeInsets.fromLTRB(
@@ -63,7 +64,7 @@ class LoginView extends StatelessWidget {
                                             BorderRadius.circular(3 * fem)),
                                     focusedBorder: OutlineInputBorder(
                                         borderSide: const BorderSide(
-                                            color: Colors.green, width: 2),
+                                            color: AppColors.accentColor, width: 2),
                                         borderRadius:
                                             BorderRadius.circular(3 * fem)),
                                     contentPadding: EdgeInsets.fromLTRB(
@@ -97,7 +98,7 @@ class LoginView extends StatelessWidget {
                                               BorderRadius.circular(3 * fem)),
                                       focusedBorder: OutlineInputBorder(
                                           borderSide: const BorderSide(
-                                              color: Colors.green, width: 2),
+                                              color: AppColors.accentColor, width: 2),
                                           borderRadius:
                                               BorderRadius.circular(3 * fem)),
                                       contentPadding: EdgeInsets.fromLTRB(
@@ -115,7 +116,7 @@ class LoginView extends StatelessWidget {
                                             controller.showPassword
                                                 ? Icons.visibility
                                                 : Icons.visibility_off,
-                                            color: Colors.green,
+                                            color: AppColors.accentColor,
                                           ),
                                         ),
                                       )),
@@ -135,7 +136,7 @@ class LoginView extends StatelessWidget {
                                   style: ElevatedButton.styleFrom(
                                       backgroundColor: controller.isEmpty
                                           ? const Color(0xff7c7c7c)
-                                          : Colors.green,
+                                          : AppColors.accentColor,
                                       elevation: 6.0,
                                       textStyle: safeGoogleFont('Inter',
                                           fontSize: 18 * ffem,
