@@ -75,6 +75,10 @@ flutter:
     - assets/images/img-write.png
     - assets/images/prostors-icon.png
     - assets/images/user-buttom.png
+    - assets/images/img-for-send.png
+    - assets/images/white-plus.png
+    - assets/images/back-button.png
+    - assets/images/emoji.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
