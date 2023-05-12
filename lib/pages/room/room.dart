@@ -13,33 +13,49 @@ class MyRoom extends StatefulWidget {
 }
 
 class RoomController extends State<MyRoom> {
-  Timeline? timeline;
   Room get room => widget.room;
   Client get sendingClient => widget.room.client;
   final TextEditingController sendController = TextEditingController();
   final int _loadHistoryCount = 100;
 
-  late final Future<Timeline> timelineFuture;
+  Timeline? timeline;
   final GlobalKey<AnimatedListState> listKey = GlobalKey<AnimatedListState>();
   int count = 0;
 
+  void onChange(i) {
+    setState(() {});
+  }
+
+  void onInsert(i) {
+    setState(() {});
+  }
+
+  void onRemove(i) {
+    setState(() {});
+  }
+
+  void onUpdate() {
+    setState(() {});
+  }
+
+  late final Future<void> _loadTimeline;
+  Future<void> _getTimeLine() async {
+    print("object");
+    timeline = await room.getTimeline(
+      onChange: onChange,
+      onUpdate: onUpdate,
+      onRemove: onRemove,
+      onInsert: onInsert
+    );
+    print("object222");
+
+    return;
+  }
+
   @override
   void initState() {
-    timelineFuture = widget.room.getTimeline(onChange: (i) {
-      print('on change! $i');
-      listKey.currentState?.setState(() {});
-    }, onInsert: (i) {
-      print('on insert! $i');
-      listKey.currentState?.insertItem(i);
-      count++;
-    }, onRemove: (i) {
-      print('On remove $i');
-      count--;
-      listKey.currentState?.removeItem(i, (_, __) => const ListTile());
-    }, onUpdate: () {
-      print('On update');
-    });
     super.initState();
+    _loadTimeline = _getTimeLine();
   }
 
   void send() {
@@ -53,14 +69,15 @@ class RoomController extends State<MyRoom> {
     await timeline!.requestHistory(historyCount: _loadHistoryCount);
   }
 
-  Future<List> getMessages() async {
-    var a = room.onUpdate.stream;
+  List getMessages() {
+    var a = timeline!.events;
+
     var text = "aaaa";
-    print('\x1B[33m$text\x1B[0m');
     a.forEach((element) {
-      text = element.toString();
       print('\x1B[33m$text\x1B[0m');
-;});
+      print('\x1B[33m$element\x1B[0m');
+    });
+
     return [];
   }
 

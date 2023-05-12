@@ -18,7 +18,6 @@ class RoomView extends StatelessWidget {
           children: [
             Expanded(
               child: FutureBuilder<Timeline>(
-                future: controller.timelineFuture,
                 builder: (context, snapshot) {
                   final timeline = snapshot.data;
                   if (timeline == null) {
