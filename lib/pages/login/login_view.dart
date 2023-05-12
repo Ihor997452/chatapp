@@ -64,7 +64,8 @@ class LoginView extends StatelessWidget {
                                             BorderRadius.circular(3 * fem)),
                                     focusedBorder: OutlineInputBorder(
                                         borderSide: const BorderSide(
-                                            color: AppColors.accentColor, width: 2),
+                                            color: AppColors.accentColor,
+                                            width: 2),
                                         borderRadius:
                                             BorderRadius.circular(3 * fem)),
                                     contentPadding: EdgeInsets.fromLTRB(
@@ -98,7 +99,8 @@ class LoginView extends StatelessWidget {
                                               BorderRadius.circular(3 * fem)),
                                       focusedBorder: OutlineInputBorder(
                                           borderSide: const BorderSide(
-                                              color: AppColors.accentColor, width: 2),
+                                              color: AppColors.accentColor,
+                                              width: 2),
                                           borderRadius:
                                               BorderRadius.circular(3 * fem)),
                                       contentPadding: EdgeInsets.fromLTRB(
@@ -145,10 +147,6 @@ class LoginView extends StatelessWidget {
                                           color: const Color(0xff7c7c7c))),
                                   child: Text(
                                       AppLocalizations.of(context)!.login)))
-                        ]
-                    )
-                )
-        )
-    );
+                        ]))));
   }
 }

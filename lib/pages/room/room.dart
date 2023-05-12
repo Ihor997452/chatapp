@@ -13,15 +13,18 @@ class MyRoom extends StatefulWidget {
 }
 
 class RoomController extends State<MyRoom> {
+  Timeline? timeline;
+  Room get room => widget.room;
+  Client get sendingClient => widget.room.client;
+  final TextEditingController sendController = TextEditingController();
+  final int _loadHistoryCount = 100;
+
   late final Future<Timeline> timelineFuture;
-  late final ScrollController scrollController;
   final GlobalKey<AnimatedListState> listKey = GlobalKey<AnimatedListState>();
   int count = 0;
 
   @override
   void initState() {
-    scrollController = ScrollController();
-
     timelineFuture = widget.room.getTimeline(onChange: (i) {
       print('on change! $i');
       listKey.currentState?.setState(() {});
@@ -39,11 +42,26 @@ class RoomController extends State<MyRoom> {
     super.initState();
   }
 
-  final TextEditingController sendController = TextEditingController();
-
   void send() {
     widget.room.sendTextEvent(sendController.text.trim());
     sendController.clear();
+  }
+
+  void requestHistory() async {
+    if (!timeline!.canRequestHistory) return;
+
+    await timeline!.requestHistory(historyCount: _loadHistoryCount);
+  }
+
+  Future<List> getMessages() async {
+    var a = room.onUpdate.stream;
+    var text = "aaaa";
+    print('\x1B[33m$text\x1B[0m');
+    a.forEach((element) {
+      text = element.toString();
+      print('\x1B[33m$text\x1B[0m');
+;});
+    return [];
   }
 
   @override

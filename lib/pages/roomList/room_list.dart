@@ -29,9 +29,7 @@ class RoomListController extends State<RoomList> {
     final client = Provider.of<Client>(context, listen: false);
     await client.logout();
 
-    Navigator.of(context).push(
-        RouteBuilder.createRoute(const Login())
-    );
+    Navigator.of(context).push(RouteBuilder.createRoute(const Login()));
   }
 
   void join(Room room) async {
@@ -39,9 +37,7 @@ class RoomListController extends State<RoomList> {
       await room.join();
     }
 
-    Navigator.of(context).push(
-        RouteBuilder.createRoute(MyRoom(room: room))
-    );
+    Navigator.of(context).push(RouteBuilder.createRoute(MyRoom(room: room)));
   }
 
   @override

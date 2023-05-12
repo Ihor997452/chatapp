@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:matrix/matrix.dart';
 import 'package:myapp/pages/roomList/room_list.dart';
+import 'package:myapp/widgets/avatar.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
@@ -75,13 +76,19 @@ class RoomListView extends StatelessWidget {
                           fem: fem,
                           ffem: ffem,
                           name: room.getLocalizedDisplayname(),
-                          avatar: CircleAvatar(
-                              foregroundImage: room.avatar == null ? null : NetworkImage(room.avatar!
-                                  .getThumbnail(client, width: 58, height: 58)
-                                  .toString())),
+                          avatar: Avatar(
+                              url: room.avatar == null
+                                  ? 'null'
+                                  : room.avatar!
+                                      .getThumbnail(client,
+                                          width: 58, height: 58)
+                                      .toString(),
+                              name: room.getLocalizedDisplayname()),
                           lastMessage: room.lastEvent!.body,
                           date: room.lastEvent!.originServerTs,
-                          callback: () {controller.join(room);});
+                          callback: () {
+                            controller.join(room);
+                          });
                       list.add(row);
                     });
                     return Column(children: list);
