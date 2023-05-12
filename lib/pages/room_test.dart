@@ -63,17 +63,7 @@ class Roomba extends StatelessWidget {
         child: Expanded(
           child: Column(
             children: [
-              GroupedListView(
-                padding: const EdgeInsets.all(8),
-                reverse: true,
-                order: GroupedListOrder.DESC,
-                elements: [],
-                groupBy: (m) {},
-                groupSeparatorBuilder: (m) {return Container();},
-                itemBuilder: (context, m) {return Container();},
 
-              ),
-              InputBar(fem: fem, ffem: ffem)
             ],
           ),
         ),

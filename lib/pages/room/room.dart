@@ -18,7 +18,7 @@ class RoomController extends State<MyRoom> {
   final TextEditingController sendController = TextEditingController();
   final int _loadHistoryCount = 100;
 
-  Timeline? timeline;
+  late Future<Timeline> timelineFuture = room.getTimeline();
   final GlobalKey<AnimatedListState> listKey = GlobalKey<AnimatedListState>();
   int count = 0;
 
@@ -38,24 +38,9 @@ class RoomController extends State<MyRoom> {
     setState(() {});
   }
 
-  late final Future<void> _loadTimeline;
-  Future<void> _getTimeLine() async {
-    print("object");
-    timeline = await room.getTimeline(
-      onChange: onChange,
-      onUpdate: onUpdate,
-      onRemove: onRemove,
-      onInsert: onInsert
-    );
-    print("object222");
-
-    return;
-  }
-
   @override
   void initState() {
     super.initState();
-    _loadTimeline = _getTimeLine();
   }
 
   void send() {
@@ -63,19 +48,12 @@ class RoomController extends State<MyRoom> {
     sendController.clear();
   }
 
-  void requestHistory() async {
-    if (!timeline!.canRequestHistory) return;
+  Future<List> getMessages() async {
+    var a = (await timelineFuture).events;
 
-    await timeline!.requestHistory(historyCount: _loadHistoryCount);
-  }
-
-  List getMessages() {
-    var a = timeline!.events;
-
-    var text = "aaaa";
     a.forEach((element) {
+      var text = element.body;
       print('\x1B[33m$text\x1B[0m');
-      print('\x1B[33m$element\x1B[0m');
     });
 
     return [];
